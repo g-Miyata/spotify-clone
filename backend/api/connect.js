@@ -1,6 +1,7 @@
 import { MongoClient } from 'mongodb';
-
-const URI = 'mongodb+srv://Miyata:12062708@spotify-clone.ipy3d.mongodb.net/?retryWrites=true&w=majority&appName=spotify-clone';
+import dotenv from 'dotenv';
+dotenv.config();
+const URI = `${process.env.MONGO_DB_KEY}`;
 
 const client = new MongoClient(URI);
 
