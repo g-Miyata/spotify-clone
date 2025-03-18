@@ -1,10 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay, faBackwardStep, faForwardStep, faCirclePause } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
+import { useRef, useState, useEffect } from 'react';
 const formatTime = (timeInSeconds) => {
   const minutes = Math.floor(timeInSeconds / 60)
     .toString()
@@ -39,7 +36,6 @@ const Player = ({ duration, randomIdFromArtist, audio }) => {
       progressBar.current.style.setProperty('--_progress', (audioPlayer.current.currentTime / durationInSeconds) * 100 + '%');
     }, 1000);
     return () => clearInterval(intervalId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying]);
 
   return (
@@ -64,7 +60,7 @@ const Player = ({ duration, randomIdFromArtist, audio }) => {
         <p>{duration}</p>
       </div>
 
-      <audio ref={audioPlayer} src={audio}></audio>
+      <audio ref={audioPlayer} src={audio} />
     </div>
   );
 };
